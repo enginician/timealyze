@@ -4,22 +4,23 @@ import wave
 import sys
 import statistics
 
-def timealyze():
+########################################
+#           INPUT PARAMETER            #
+########################################
+bpm = 136
+offsetms = 0  # offset for beat grid in ms. Moves the beat grid to the right and is used to align with recording. Set to 0 to have program search for correct offset!
+threshold = 5000  # signal threshold that needs to be exceeded to detect a note
+deadzone = 0  # deadzone in per cent of subdivision. Beats within the value's percentage are ignored at the beinning and the end of a grid boundary
+subdiv = 4  # 1 for quarter notes, 2 for eights, 3 for triplets and so on
+cappeaks = True  # This can be helpful if the waveform of some sounds has its max value further in the back and not just at the beginning of the onset.
+sigma16threshold = 1  # threshold standard deviation for offset finding algorithm in 16th notes
+muthreshold = 0.6  # threshold for offset finding algorithm in ms
 
-    ########################################
-    #           INPUT PARAMETER            #
-    ########################################
-    bpm = 136
-    offsetms = 0 # offset for beat grid in ms. Moves the beat grid to the right and is used to align with recording. Set to 0 to have program search for correct offset!
-    threshold = 5000 # signal threshold that needs to be exceeded to detect a note
-    deadzone = 0  # deadzone in per cent of subdivision. Beats within the value's percentage are ignored at the beinning and the end of a grid boundary
-    subdiv = 4 #1 for quarter notes, 2 for eights, 3 for triplets and so on
-    cappeaks = True # This can be helpful if the waveform of some sounds has its max value further in the back and not just at the beginning of the onset.
-    sigma16threshold = 0.31 # threshold standard deviation for offset finding algorithm in 16th notes
-    muthreshold = 0.3 # threshold for offset finding algorithm in ms
+########################################
 
-    file = "Patrick_SSR_136_links.wav"
-    ########################################
+def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks):
+
+    file = "output.wav"
 
     spf = wave.open(file, "r")
 
@@ -46,7 +47,7 @@ def timealyze():
         signal[signal > (signal[maxvalue]*0.7)] = signal[maxvalue]*0.7
 
     deadzonems = deadzone * 60 / bpm / subdiv / 100 *1000 # deadzone in ms after and before grid boundary in which a beat cannot be detected. Prevents beat detection through maximum value at beginning of grid due to crash cymbal noise from beat before
-    offset = int(offsetms*fs/1000) #offset for geat grid in samples. Used for internal calculations below
+    offset = int(offsetms*fs/1000) #offset for beat grid in samples. Used for internal calculations below
     deadzone = (deadzonems*fs/1000)
     gw = int(fs*60/bpm/subdiv)
     #initialize mu and sigma 16
@@ -87,7 +88,7 @@ def timealyze():
                 if targetdiff[-1] > 0:
                     xlate.append(np.arange(targetindex[-1], beatindex[-1], 0.001))
 
-        # convert peaks for time in secods
+        # convert peaks for time in seconds
         ##peakssec = []
         ##for i in range(len(peaks)):
         ##    peakssec.append(peaks[i]/fs)
@@ -96,7 +97,7 @@ def timealyze():
 
         # convert targetdiff to percentage of 16th notes
         for i in range(len(targetdiff)):
-            targetdiff16.append( targetdiff[i]* bpm/60*4)
+            targetdiff16.append(targetdiff[i]* bpm/60*4)
 
         # convert targetdiff to milli seconds
         for i in range(len(targetdiff)):
@@ -115,15 +116,19 @@ def timealyze():
         # create loop to fit offset such that the mean deviation is minimized (the analysis focusses on relative timing rather than absolute timing because there is no absolute timing reference available (e.g. a click))
         # simple and ugly brute force while loop without exit condition, fix later
         while abs(mu) > muthreshold or sigma16 > sigma16threshold :
-            offset = int(offsetms*fs/1000) #offset for geat grid in samples. Used for internal calculations below
+            try:
+                offset = int(offsetms*fs/1000) #offset for geat grid in samples. Used for internal calculations below
 
-            offset, mu, sigma16, beatindex, gridindex, targetindex, xlate, xearly, targetdiff16, targetdiffms, deadzonefill = analyze(offset, mu)
+                offset, mu, sigma16, beatindex, gridindex, targetindex, xlate, xearly, targetdiff16, targetdiffms, deadzonefill = analyze(offset, mu)
 
-            if abs(mu) > 10:
-                offsetms +=10
-            else:
-                offsetms += 1
-            print("the offset is {} ms, mu is {} ms and sigma16 is {}".format(round(offsetms,1), round(mu, 2),round(sigma16,2)))
+                if abs(mu) > 10:
+                    offsetms +=10
+                else:
+                    offsetms += 1
+                print("the offset is {} ms, mu is {} ms and sigma16 is {}".format(round(offsetms,1), round(mu, 2),round(sigma16,2)))
+            except:
+                offsetms += 100
+                continue
 
         offsetms -=1
 
@@ -214,4 +219,4 @@ def timealyze():
 
 if __name__ == '__main__':
 
-    timealyze()
+    timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks)

@@ -1,8 +1,5 @@
-from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QStatusBar
 import timing
 import recorder
-import sys
 
 # main file mainly containing the GUI controls
 

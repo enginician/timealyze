@@ -225,7 +225,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Dein Timing stimmt zu</string>
+     <string>Timing Genauigkeit</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -264,7 +264,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Sechszentel</string>
+     <string>Sechzehntel</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="quarter">
@@ -606,5 +606,38 @@ min-width: 40px;</string>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>bpm</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dial</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>262</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>301</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>bpm</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>197</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

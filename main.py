@@ -235,6 +235,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.bpm.valueChanged['int'].connect(self.dial.setValue)
+        self.dial.valueChanged['int'].connect(self.bpm.setValue)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -247,9 +249,9 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Rhythmusraster"))
         self.eighth.setText(_translate("MainWindow", "Achtel"))
         self.label_4.setText(_translate("MainWindow", "Aufnahme"))
-        self.label_5.setText(_translate("MainWindow", "Dein Timing stimmt zu"))
+        self.label_5.setText(_translate("MainWindow", "Timing Genauigkeit"))
         self.triplets.setText(_translate("MainWindow", "Triolen"))
-        self.sixteenth.setText(_translate("MainWindow", "Sechszentel"))
+        self.sixteenth.setText(_translate("MainWindow", "Sechzehntel"))
         self.quarter.setText(_translate("MainWindow", "Viertel"))
         self.offset.setText(_translate("MainWindow", "offset [ms]"))
         self.showplot.setText(_translate("MainWindow", "Show Plots"))
@@ -259,7 +261,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Profi Einstellungen"))
         self.stop.setText(_translate("MainWindow", "stop"))
         self.threshold_label.setText(_translate("MainWindow", "Beat Erkennungsschwelle"))
-        self.label_3.setText(_translate("MainWindow", "v1.1.0"))
+        self.label_3.setText(_translate("MainWindow", "v1.1.1"))
 
 
         # insert adapted and added code here:
@@ -300,7 +302,7 @@ class Ui_MainWindow(object):
 
         '''calculate the worst case deviation from a perfectly timed hit in ms. Note: divided by 2 because only relative
         timing is considered: more than half the time span of a note to late is rather too early for the next one.'''
-        worstdiff = 60*1000/(subdiv*2*bpm)
+        worstdiff = 60*1000/(4*2*bpm)
 
         # calculate score. 100% is perfect timing. 50% means that on average the hits are 50% of worstdiff too late or too early
         score = (1 - sigmams/worstdiff) *100

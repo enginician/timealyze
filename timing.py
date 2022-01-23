@@ -152,7 +152,7 @@ def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks):
     fig = plt.figure(figsize=(16,9))
     ax1 = fig.add_subplot(311)
     ax1.set_ylabel('Signallevel')
-    ax1.set_title("Timing Analyse von '{}'".format(file))
+    ax1.set_title("timealyze - Timinganalyse")
 
     ax1.plot(time,signal)
 

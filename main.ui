@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>836</width>
-    <height>675</height>
+    <width>962</width>
+    <height>833</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>timealyze</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="start">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>150</y>
+     <x>610</x>
+     <y>120</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -34,8 +37,8 @@
   <widget class="QPushButton" name="timealyze">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>360</y>
+     <x>600</x>
+     <y>350</y>
      <width>171</width>
      <height>131</height>
     </rect>
@@ -53,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>20</y>
+     <y>80</y>
      <width>151</width>
      <height>131</height>
     </rect>
@@ -72,7 +75,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>170</y>
+     <y>230</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -83,14 +86,14 @@
     </font>
    </property>
    <property name="text">
-    <string>tempo [bpm]</string>
+    <string>Tempo [bpm]</string>
    </property>
   </widget>
   <widget class="QPushButton" name="stop">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>220</y>
+     <x>610</x>
+     <y>190</y>
      <width>131</width>
      <height>51</height>
     </rect>
@@ -107,100 +110,54 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>90</y>
+     <x>620</x>
+     <y>60</y>
      <width>111</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Recording</string>
+    <string>Aufnahme</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="threshold_label">
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>320</y>
-     <width>171</width>
+     <y>590</y>
+     <width>201</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>signal threshold</string>
+    <string>Beat Erkennungsschwelle</string>
    </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>560</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>cap peaks</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cappeaks">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>560</y>
-     <width>221</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="mouseTracking">
-    <bool>false</bool>
-   </property>
-   <property name="currentText">
-    <string>True</string>
-   </property>
-   <item>
-    <property name="text">
-     <string>True</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>False</string>
-    </property>
-   </item>
   </widget>
   <widget class="QSpinBox" name="threshold">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>320</y>
-     <width>171</width>
-     <height>41</height>
+     <x>280</x>
+     <y>600</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="maximum">
@@ -214,14 +171,14 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>390</y>
+     <y>660</y>
      <width>171</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -231,50 +188,26 @@
   <widget class="QSpinBox" name="deadzone">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>390</y>
-     <width>171</width>
-     <height>41</height>
+     <x>280</x>
+     <y>670</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="value">
     <number>5</number>
    </property>
   </widget>
-  <widget class="QSpinBox" name="subdivide">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>470</y>
-     <width>171</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>4</number>
-   </property>
-   <property name="value">
-    <number>1</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>470</y>
+     <y>300</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -285,21 +218,21 @@
     </font>
    </property>
    <property name="text">
-    <string>subdivide</string>
+    <string>Rhythmusraster</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="offsetms">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>250</y>
-     <width>171</width>
-     <height>41</height>
+     <x>280</x>
+     <y>530</y>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="maximum">
@@ -313,14 +246,14 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>250</y>
+     <y>520</y>
      <width>171</width>
      <height>51</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -331,7 +264,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>180</y>
+     <y>240</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -349,6 +282,267 @@
    </property>
    <property name="value">
     <number>120</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>580</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Punktzahl:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="score">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>630</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="showplot">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>500</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Show Plot</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cappeaks">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>730</y>
+     <width>291</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Signalspitzen kappen                 </string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="quarter">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>370</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Viertel</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="eighth">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>370</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Achtel</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="triplets">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>370</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Triolen</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="sixteenth">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>370</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Sechszentel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>460</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Profi Einstellungen</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>280</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Auswertung</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>120</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Einstellungen</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>680</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Anzahl erkannter Beats:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="numbeats">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>730</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

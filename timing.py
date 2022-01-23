@@ -18,7 +18,7 @@ muthreshold = 0.6  # threshold for offset finding algorithm in ms
 
 ########################################
 
-def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks):
+def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks, showplot):
 
     file = "output.wav"
 
@@ -107,7 +107,6 @@ def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks):
         mu = statistics.mean(targetdiffms)
 
         return offset, mu, sigma16, beatindex, gridindex, targetindex, xlate, xearly, targetdiff16, targetdiffms, deadzonefill
-
 
     ###########################################################################################################################
 
@@ -213,10 +212,14 @@ def timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks):
 
     plt.text(0.95, 0.02, "v1.0.0", fontsize=6, transform=plt.gcf().transFigure)
 
-
     #plt.tight_layout()
+
+    # Return value to show score in GUI
+    return sigmams, len(beatindex)
+
+def showplot():
     plt.show()
 
 if __name__ == '__main__':
 
-    timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks)
+    timealyze(bpm, offsetms, threshold, deadzone, subdiv, cappeaks, showplot=True)

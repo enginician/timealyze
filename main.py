@@ -261,7 +261,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Profi Einstellungen"))
         self.stop.setText(_translate("MainWindow", "stop"))
         self.threshold_label.setText(_translate("MainWindow", "Beat Erkennungsschwelle"))
-        self.label_3.setText(_translate("MainWindow", "v1.1.1"))
+        self.label_3.setText(_translate("MainWindow", "v1.1.2"))
 
 
         # insert adapted and added code here:
@@ -302,7 +302,7 @@ class Ui_MainWindow(object):
 
         '''calculate the worst case deviation from a perfectly timed hit in ms. Note: divided by 2 because only relative
         timing is considered: more than half the time span of a note to late is rather too early for the next one.'''
-        worstdiff = 60*1000/(4*2*bpm)
+        worstdiff = 60*1000/(subdiv*2*bpm)
 
         # calculate score. 100% is perfect timing. 50% means that on average the hits are 50% of worstdiff too late or too early
         score = (1 - sigmams/worstdiff) *100

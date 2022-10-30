@@ -1,5 +1,5 @@
 # timealyze
-Tool for rhythm and timing training. The app records and analyzes simple rhythms for (relative) timing.
+Tool for musical rhythm and timing training. The app records and analyzes simple rhythms for (relative) timing.
 
 You need a metronome (ideally with headphones) for this app to work properly
 
